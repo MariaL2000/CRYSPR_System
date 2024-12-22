@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Kumbh+Sans:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  scroll-behavior: smooth;
+}
+header {
+  background-image: url(https://th.bing.com/th/id/R.a2b0202419b02216add5990fbca924bd?rik=8oEyLGJDr9MIKQ&pid=ImgRaw&r=0);
+  background-size: cover;
+  background-attachment: fixed;
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+}
+header h1 {
+  font-family: url(https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap);
+  font-optical-sizing: auto;
+  font-size: 2rem;
+  color: #ffffff;
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+}
+main {
+  padding: 0 1.5rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+}
+
+.contenedor {
+  margin: 40px;
+  font-family: "SoDo Sans SemiBold", Helvetica Neue, Helvetica, Arial,
+    sans-serif;
+  text-align: left;
+}
+
+nav {
+  /* border-style: solid;
+  border-color: rgb(82, 82, 192);  */
+  border-radius: 2%;
+  border: 0.2rem solid rgb(82, 82, 192);
+  width: 20rem;
+  padding: 1.2rem;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+nav ul li {
+  list-style: none;
+}
+nav ul li a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.frase {
+  direction: rtl;
+  text-shadow: 2px 2px 8px orange;
+  font-family: Arial;
+  margin-right: 20px;
+  font-style: oblique;
+}
+
+.Introduccion,
+.Crispr1 {
+  text-align: justify;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 15px;
+}
+
+.fago {
+  border: dotted;
+  border-style: solid;
+  border-color: rgb(82, 82, 192);
+  border-radius: 5px;
+
+  padding: 20px;
+  text-align: justify;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 15px;
+}
+.block-blue {
+  background: rgb(0, 247, 255);
+  font-size: 1.3rem;
+  padding: 0.4rem;
+
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.CRISPR {
+  text-align: justify;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 15px;
+}
+
+.float-right {
+  float: left;
+  padding: 20px;
+  margin: 0 10px 10px 0;
+  background: rgb(0, 247, 255);
+  font-size: 15px;
+  margin: 30px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.infront {
+  font-size: 24px;
+  /* Tamaño de fuente */
+  font-weight: bold;
+  /* Negrita */
+  text-align: center;
+  /* Centrar texto */
+  margin: 20px 0;
+  /* Margen superior e inferior */
+  color: #007bff;
+}
+.container {
+  margin: 20px;
+  text-align: justify;
+}
+.list-group-item {
+  transition: background-color 0.3s;
+  /* Transición suave para el fondo */
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  /* Color de fondo al pasar el mouse */
+}
+
+.list-group-item h5 {
+  font-size: 18px;
+  /* Tamaño de fuente para el título */
+  color: #000000;
+  text-decoration: none;
+  /* Color del título */
+}
+
+.list-group-item p {
+  font-size: 14px;
+  /* Tamaño de fuente para la descripción */
+  color: #000000;
+  /* Color de la descripción */
+}
+
+
+.links {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.links h2 {
+  margin-top: 0;
+}
+
+.links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.links ul li {
+  margin: 10px 0;
+}
+
+.links ul li a {
+  color: #1e268f;
+  text-decoration: none;
+}
+
+.links ul li a:hover {
+  text-decoration: underline;
+}

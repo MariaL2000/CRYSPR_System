@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRISPR y Bioinformática</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylecrisp.css') }}" />
+
+    <!-- <link rel="import" href="index.html"> -->
+  </head>
+
+  <body>
+    <header>
+      <h1>Bioinformática en CRISPR</h1>
+    </header>
+
+    <div class="frase">
+      <p>
+        “Hemos aprendido más de los genes que en cien años analizando piedras.
+        Nuestros límites han desaparecido.” <br /><b>Bryce Dallas Howard</b>
+      </p>
+      <p></p>
+    </div>
+
+    <main>
+      <nav>
+        <h1 class="tablacontenidos">Contenidos:</h1>
+        <hr />
+        <ul>
+          <li><a href="#Introduccion">Introducción</a></li>
+          <li><a href="#Crispr1">¿Qué es CRISPR?</a></li>
+          <li><a href="#Genetica">CRISPR en la edición genética</a></li>
+          <li><a href="#Bioinform">La bioinformática en CRISPR</a></li>
+          <li>
+            <a href="#Futuro">Revolución cientifica y futuro de CRISPR</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="Introduccion">
+        <h3 class="Introd">Introducción</h3>
+        <p>
+          Los ácidos ribonucleico y desoxirribonucleico (ARN y ADN,
+          respectivamente) son las moléculas fundamentales que contienen la
+          información genética de los seres vivos. Estas macromoléculas
+          desempeñan un papel crucial en el almacenamiento, transmisión y
+          expresión de la información genética, siendo la base de todos los
+          procesos biológicos. Las células sufren constantemente daños en el
+          ADN, ya sea por la acción de carcinógenos o por exposición a
+          radiaciones ionizantes, y por tanto han desarrollado mecanismos para
+          reparar lesiones. La detección de daños en el ADN lleva a reclutar
+          enzimas endógenas que las reparen y, con los años, los investigadores
+          llegaron a la conclusión de que este proceso natural podía
+          aprovecharse para instalar procesos de edición personalizados durante
+          el proceso de reparación. La herramienta ideal sería probablemente una
+          <a href="https://www.lifeder.com/nucleasas">«nucleasa programable»</a
+          >, una enzima que corta ácidos nucleicos. El descubrimiento de CRISPR
+          (Repeticiones Palindrómicas Cortas Agrupadas y Regularmente Espaciadas
+          (Clustered Regulary Interspaced Short Palindromic Repeats)) brindaba
+          la solución perfecta. En lugar de tratar de reinventar la rueda, ¿por
+          qué no adaptar las nucleasas programables ya esculpidas por la
+          naturaleza a lo largo de miles de millones de años de evolución? Si
+          las bacterias emplean CRISPR para introducir cortes de ADN en genomas
+          virales para prevenir infecciones, los científicos pueden emplear
+          CRISPR para introducir roturas de ADN en genomas eucariotas, y así
+          editar genes. El descubrimiento partió de la curiosidad científica
+          básica sobre una cuestión biológica: la lucha entre virus y bacterias.
+          Los virus bacterianos evolucionaron para infectar a las bacterias,
+          poseen estructuras tridimensionales exquisitamente preparadas para
+          acoplarse a la superficie externa de células bacterianas y, una vez
+          adheridas a ellas, inyectan su material genético dentro de la bacteria
+          huésped. Hoy en día, CRISPR, impulsada por los avances en
+          bioinformática, se ha convertido en una herramienta revolucionaria
+          para la edición genética precisa y dirigida, abriendo nuevas
+          posibilidades en campos como la medicina personalizada, la mejora de
+          cultivos agrícolas y la comprensión de los mecanismos subyacentes a
+          diversas enfermedades. La presente investigación tiene como objetivo
+          analizar la conexión existente entre CRISPR y la bioinformática para
+          la innovación de la edición genética, así como las aplicaciones de
+          esta tecnología en el mundo actual.
+        </p>
+      </div>
+
+      <div class="Crispr1">
+        <h3>CRISPR en la naturaleza:</h3>
+        CRISPR es el acrónimo de agrupaciones de repeticiones de secuencias
+        cortas palindrómicas regularmente inter-espaciadas. Estas secuencias
+        repetidas de 29 nucleótidos separadas por varias secuencias espaciadoras
+        de 32 nucleótidos fueron reportadas por primera vez en la bacteria
+        Escherichia coli desde 1987(Souza V., Castillo A. ,2001). Inicialmente,
+        se contempló que este ADN era “basura”; sin embargo, diversos análisis
+        revelaron que las secuencias llamadas espaciadoras, eran complementarias
+        con secuencias de algunos fagos y virus que atacan a las bacterias. Este
+        fue un hallazgo muy importante para considerar que las bacterias poseían
+        algo similar a un sistema inmune con memoria. Años más tarde, se
+        descubrió que el sistema CRISPR es un sistema inmune adaptativo mediado
+        por ARN que protege a las bacterias y a las Archaeas de virus o
+        plásmidos y representan un importante ejemplo de memoria molecular
+        transmitida hereditariamente(Barragou y Marraffini, 2014; Singh et al.,
+        2017). Aunque se encuentren en ambientes hostiles y competitivos. Estos
+        sistemas mantienen la integridad genética; sin embargo, de vez en cuando
+        se permite la captación de ADN exógeno y la conservación del material
+        genético ventajoso para su adaptación al entorno. Esta incorporación de
+        ADN exógeno con fines de sobrevivencia es facilitada por el sistema
+        CRISPR la cual tiene dos componentes: repeticiones y espaciadores.
+        repeticiones — Estos son segmentos de ADN que tienen todos la misma
+        secuencia. Generalmente son de alrededor de 30 pares de bases en
+        longitud. Las repeticiones se denominan "palindrómicas" en las siglas
+        CRISPR porque suelen contener un tramo de bases seguido por las bases
+        complementario de la misma secuencia, en orden inverso. espaciadores —
+        Estos se sientan entre las repeticiones. Son pequeños segmentos de ADN
+        de fago, cada uno diferente del otro. Estas son las "memorias
+        moleculares" descritas anteriormente. Los espaciadores son restos de
+        previas infecciones previas y se transmiten a través de generaciones de
+        bacterias.(Hochstrasser, ML, Henderson, 2022). Las bacterias hacen
+        muchas copias de ARN de las memorias del fago y las usan para encontrar
+        nuevos fagos invasores. El término biológico para este proceso es
+        biogénesis del ARNCRISPR. Implica transcribir toda la matriz de
+        repeticiones y espaciadores CRISPR en una pieza larga de ARN llamada ARN
+        precursor CRISPR (pre-ARNcr). Por lo general, las proteínas Cas luego
+        cortan o 'rompen' el ARN largo en segmentos cortos e individuales. Estos
+        contienen un espaciador y partes de las repeticiones. Las copias finales
+        de ARN completamente recortadas de las memorias del fago se denominan
+        ARN CRISPR (ARNcr). Luego, las proteínas Cas utilizarán cada ARNcr para
+        buscar e identificar positivamente el ADN del fago coincidente. El paso
+        final en la inmunidad CRISPR conduce a la destrucción del ADN del fago
+        invasor. Este proceso se llama interferencia, porque implica que el
+        sistema CRISPR "interfiere" o detiene el ciclo de vida del fago. La
+        interferencia comienza con una sola proteína Cas o un grupo de proteínas
+        Cas agarrando o uniéndose a un ARNcr. Juntos, la(s) proteína(s) Cas más
+        el ARNcr forman lo que se conoce como complejo de búsqueda, complejo
+        efector, o como lo llamaremos aquí: el complejo de vigilancia.
+      </div>
+
+      <div class="fago">
+        <p>
+          <span class="block-blue"
+            >¿Cómo actúan las bacterias ante la amenaza del fago?
+          </span>
+          Cuando un fago inyecta su ADN en una célula bacteriana, el complejo de
+          vigilancia explora el genoma del fago en busca de una secuencia que
+          coincida con el espaciador en su ARNcr. Esta secuencia objetivo se
+          denomina protoespaciador. Debido a que el ARNcr es una copia del ADN
+          del fago original, es complementario y puede formar pares de bases con
+          una hebra del ADN inyectada por otro fago de la misma especie. Los
+          pares de bases entre el ARN y el ADN se parecen mucho a los que hay
+          entre cada hebra de ADN en una doble hélice normal. El complejo de
+          vigilancia desabrocha el ADN del fago y comprueba si el ARNcr puede
+          formar pares de bases con una hebra. Si todo el espaciador puede
+          formar pares de bases, significa que el complejo de vigilancia ha
+          encontrado el objetivo que ha estado buscando, por lo que corta el ADN
+          del fago para destruirlo. Si el complejo de vigilancia busca en todo
+          el ADN de la célula pero no encuentra ninguna coincidencia, no hace
+          ningún corte. Su descubrimiento puede ser considerado como uno de los
+          primeros frutos de la exploración sistemática de los genomas
+          procariotas. Aunque esta característica genómica se encontró por
+          casualidad en estudios de biología molecular, fue la disponibilidad de
+          múltiples genomas completos que arrojan luz sobre su papel como un
+          sistema de defensa, así como en una variedad de funciones, tales como
+          el reparto de replicones, la adaptación a alta temperatura, los
+          reordenamientos cromosómicos y la reparación del ADN
+        </p>
+      </div>
+
+      <div class="CRISPR">
+        <h4>CRISPR-Cas9 en la innovación científica: Mecanismo de acción:</h4>
+        <p>
+          CRISPR-Cas9 es uno de los sistemas que se encuentra dentro de los de
+          clase II, y deriva de una bacteria llamada Streptococcus pyogenes. El
+          sistema que ha sido adaptado para la edición de genomas está compuesto
+          por la proteína Cas9 (nucleasa asociada a CRISPR) y un sgARN
+          (single-guided RNA) que actúa como ARN guía dirigiendo a Cas9 al sitio
+          diana.
+        </p>
+
+        <p>
+          El sgARN es de pequeño tamaño, ya que está compuesto por tan solo 20
+          nucleótidos (Chilebio, 2017). La nucleasa y el ARN guía o sgARN
+          funcionan asociados formando un complejoEl mecanismo de defensa
+          CRISPR-Cas es un proceso secuencial de tres etapas que comienza con la
+          adquisición, seguida por el procesamiento del ARN, finalizando con el
+          proceso de interferencia. Durante la fase de adquisición, el ADN
+          extraño se reconoce por primera vez (como extraño / invasivo) y se
+          captura y posteriormente se integra como espaciadores entre las dos
+          secuencias de repetición contiguas situadas en el lugar CRISPR. Los
+          pequeños nucleótidos presentes cerca del protospacer se conocen como
+          el adyacente protospacer (PAM).(Yamano et al., 2016). ¿Qué es PAM? La
+          molécula guía contiene una secuencia (protoespaciador) que es
+          complementaria del segmento de ADN objetivo. Inmediatamente adyacente
+          a este protoespaciador hay otra corta secuencia crítica conocida como
+          motivo adyacente del protoespaciador (PAM). El PAM es distinto del
+          componente de la secuencia objetivo complementaria del ARNsg y se
+          encuentra aguas abajo del sitio objetivo que se encuentra en el ADN
+          genómico.Al construir moléculas guía ARNsg, la secuencia PAM se debe
+          posicionar en el extremo 3' de la secuencia objetivo de ADN después de
+          las secuencias de ARNcr y ARNtracr. Antes de probar si su ARNcr puede
+          formar pares de bases con un tramo de ADN, Cas9 primero busca su
+          secuencia PAM específica: GG, dos bases de guanina. Si no hay PAM,
+          Cas9 se aleja flotando. Incluso si el ARNcr contiene una coincidencia
+          perfecta y complementaria con una secuencia de ADN, Cas9 no lo
+          encontrará sin ver primero un PAM. Cuando Cas9 encuentra con éxito un
+          PAM, luego comprueba si el ADN adyacente coincide con su ARNcr guía.
+          Si lo hace, entonces Cas9 sabe que está bien cortar. La matriz de
+          espaciadores repetidos no contiene secuencias PAM, por lo que Cas9 no
+          la corta.(C. Anders, et al.; 2014) ¿Qué es Cas9? Cas9 es una proteína
+          única de dos lóbulos hecha de varias regiones dinámicas llamadas
+          dominios. Puede pensar en los dominios de proteínas como diferentes
+          partes del cuerpo: todos están conectados y trabajan juntos, pero cada
+          uno hace cosas diferentes. Cas9 es bilobulado porque sus dominios
+          forman dos lóbulos: el lóbulo de reconocimiento (abreviado REC) y el
+          lóbulo de nucleasa (NUC). Estos son algo así como la "parte superior"
+          y la "parte inferior" de Cas9. De esta manera, su forma se parece más
+          o menos a una almeja.El lóbulo REC es importante para transportar el
+          ARN guía. El lóbulo NUC contiene dos dominios de nucleasa separados
+          llamados Hnh y RuvC. Puede pensar en ellos como las dos cuchillas de
+          las "tijeras moleculares" de Cas9. El dominio HNH es bastante grande y
+          móvil, mientras que el dominio RuvC es menos dinámico. Existen varias
+          vías de activación de CRISPR, una de las cuales requiere un tramo de
+          ARN, llamado ARNtracr, que trabaja con Cas9 para producir el grupo
+          ARNcr; este hallazgo fue reportado en Nature en el 2011, por
+          Carpentier y su grupo de investigación. Además, el grupo propuso que,
+          en conjunto, las Cas9 y el ARNtracr atacan al ADN extraño, esta
+          secuencia coincide con el ARNcr, la función de ese ARNtracr es en la
+          maduración de los ARNcr, es parcialmente complementario y el par de
+          bases con un ARNpre-cr que forma un dúplex de ARN(Pennisi,2013). Esto
+          se escinde mediante RNasa III, una ribonucleasa específica de ARN,
+          para formar un híbrido de ARNcr /ARN tracr. Este híbrido actúa como
+          una guía para la endonucleasa Cas9 de donde realizará su corte. Tras
+          el corte, la secuencia de remplazo de ADN es complementaria a un tramo
+          de 20 nucleótidos del ARNcr. Usando dos regiones separadas, o
+          “dominios” en su estructura, Cas9 corta ambas cadenas de la doble
+          hélice de ADN, haciendo lo que se conoce como una “ruptura de doble
+          hebra”. Hay un mecanismo de seguridad incorporado, que asegura que
+          Cas9 no corte en cualquier parte de un genoma; sin embargo, se han
+          reportado casos que no sucede así. Como se mencionaba anteriormente,
+          existen muchos tipos de genes Cas encontrados de forma conservada y
+          adyacente a los elementos repetidos, entre ellos el sistema Cas9 .
+          Entonces, en referencia al sistema CRISPR-Cas9 éste se basa en las
+          dobles roturas de cadena de ADN, que son consideradas como el tipo de
+          daño más letal en eL genoma, ya que un fallo en su reparación puede
+          suponer, en algunos sistemas, la muerte celular o la transformación
+          tumoral. La unión de extremos no-homólogos, conocida por las iniciales
+          NHEJ (del inglés "non-homologous end joining"), es un mecanismo de
+          reparación de las dobles roturas en el ADN que puede operar en
+          cualquier fase del ciclo celular, y que en mamíferos es esencial para
+          mantener la estabilidad del genoma. Este mecanismo recurre a una
+          combinación de proteínas encargadas de la protección y del
+          mantenimiento de la proximidad de los extremos y del procesamiento
+          necesario para reparar la rotura.Estas características son aplicadas
+          para editar el genoma de forma precisa lo que constituye una poderosa
+          herramienta para la investigación de los procesos biológicos, que
+          rebasa las limitaciones técnicas que puede presentar la transgénesis.
+          En el campo de la biotecnología y específicamente de la ingeniería
+          genética, siempre fue un reto poder “identificar” un sitio específico
+          del ADN y poder editarlo al mismo tiempo, por ejemplo, para cambiar
+          una mutación puntual que impide la formación de una proteína, o para
+          poder eliminar toda una variante defectuosa de un gen.
+        </p>
+      </div>
+
+      <div class="fago">
+        <p>
+          <span class="block-blue"
+            >Importancia de la bioinformática en CRISPR:</span
+          >
+          La bioinformática ha jugado un papel fundamental en el desarrollo de
+          la edición genética, una técnica que permite alterar el ADN de las
+          células para tratar enfermedades. A continuación, se presentan algunas
+          de las aplicaciones más relevantes de la bioinformática en la edición
+          genética: 1 Análisis de datos genéticos: La bioinformática se utiliza
+          para analizar grandes cantidades de datos genéticos, lo que permite
+          identificar variaciones específicas que contribuyen a enfermedades.
+          Esto permite a los científicos prever la susceptibilidad a ciertas
+          condiciones y desarrollar terapias dirigidas. 2 . Edición genética: La
+          bioinformática es crucial para la edición genética, ya que permite
+          analizar y entender los complejos datos biológicos necesarios para la
+          edición del ADN. Algunos ejemplos de técnicas de edición genética
+          incluyen la CRISPR-Cas9, que utiliza una enzima llamada Cas9 para
+          cortar y reparar el ADN, y la edición de genes mediante la utilización
+          de bioinformática para diseñar y implementar estrategias de edición
+          más precisas. 3 Terapias génicas: La bioinformática se utiliza para
+          desarrollar terapias génicas que permiten corregir mutaciones
+          genéticas causantes de enfermedades. Estas terapias pueden ser
+          utilizadas para tratar enfermedades como la fibrosis quística, la
+          enfermedad de Huntington y la enfermedad de Parkinson. 4 Análisis de
+          secuencias de ADN: La bioinformática se utiliza para analizar
+          secuencias de ADN para identificar patrones y variaciones que pueden
+          ser relevantes para la edición genética. Esto permite a los
+          científicos entender mejor cómo las mutaciones genéticas contribuyen a
+          enfermedades y desarrollar estrategias de tratamiento más efectivas. 5
+          Modelado de sistemas: La bioinformática también se utiliza para
+          modelar sistemas biológicos complejos, lo que permite a los
+          científicos simular y predecir el comportamiento de las células y los
+          organismos en respuesta a la edición genética. Esto puede ser útil
+          para entender mejor cómo las terapias génicas pueden afectar a las
+          células y los organismos Aplicaciones de CRISPR en el mundo actual:
+          Los avances recientes en el desarrollo de tecnologías de edición de
+          genomas precisos de los procesos patológicos. Una aplicación
+          particularmente tentadora de nucleasas programables es su potencial
+          para corregir directamente mutaciones genéticas en tejidos y células
+          afectadas para tratar enfermedades que tienen terapias tradicionales
+          complejas o abrir potenciales tratamientos a infecciones como la del
+          VIH. Las proteínas nucleasas también han sido utilizadas para crear
+          modificaciones genéticas sitio específicas en células vegetales. Los
+          esfuerzos se centraron en la obtención de cambios hereditarios en la
+          mayoría de las especies de cultivos transformables, animales e incluso
+          células pluripotenciales humanas. Tanto CRISPR-Cas9 como CRISPR-Cpf1
+          (sistema CRISPR procedente de la bacteria Francisella tularensis) son
+          los dos sistemas mejor estudiados y más usados en plantas, pero se
+          están investigando nuevas versiones de las nucleasas, porque casi la
+          mitad de las bacterias y la mayoría de las arqueas tienen sistemas
+          similares de CRISPR, y actualmente se están usando un pequeño número
+          de sistemas cuando la variedad de herramientas disponibles en la
+          naturaleza es casi infinita. (Ronald P.; Kliegman M.; CRISPRPEDIA).
+          Algunos de los usos prometedores en agricultura se han mostrado en
+          cultivos de trigo, maíz y tomate, desarrollando variedades mejoradas
+          en caracteres como la defensa frente a plagas, la adaptación a la
+          sequía, el rendimiento, y también la calidad y las características
+          nutricionales para el consumidor. Algunos ejemplos de estos usos que
+          se han llevado a cabo con éxito son el trigo sin gluten apto para
+          celiacos al silenciar los genes que tenías la información para
+          producir las α-, γ- y ω-gliadinas proteínas formadoras de gluten.
+        </p>
+      </div>
+
+      <div class="infront">Proteínas claves en CRISPR, fuente en PDB</div>
+      <div class="container">
+        <div class="list-group mt-4">
+          <a
+            href="https://www.rcsb.org/search?request=%7B%22query%22%3A%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22terminal%22%2C%22service%22%3A%22text%22%2C%22parameters%22%3A%7B%22attribute%22%3A%22struct_keywords.text%22%2C%22operator%22%3A%22contains_phrase%22%2C%22value%22%3A%22Cas9%2C%20CRISPR%2C%20DNA%20BINDING%20PROTEIN%22%7D%7D%5D%2C%22logical_operator%22%3A%22and%22%7D%5D%2C%22logical_operator%22%3A%22and%22%2C%22label%22%3A%22text%22%7D%5D%2C%22logical_operator%22%3A%22and%22%7D%2C%22return_type%22%3A%22entry%22%2C%22request_options%22%3A%7B%22paginate%22%3A%7B%22start%22%3A0%2C%22rows%22%3A25%7D%2C%22results_content_type%22%3A%5B%22experimental%22%5D%2C%22sort%22%3A%5B%7B%22sort_by%22%3A%22score%22%2C%22direction%22%3A%22desc%22%7D%5D%2C%22scoring_strategy%22%3A%22combined%22%7D%2C%22request_info%22%3A%7B%22query_id%22%3A%226c6fdfbc607ba6586b6dc92f84cf4866%22%7D%7D"
+            class="list-group-item list-group-item-action"
+            target="_blank"
+          >
+            <h5 class="mb-1">Cas9</h5>
+            <p class="mb-1">Nucleasa que corta el ADN guiada por ARN.</p>
+          </a>
+          <a
+            href="https://www.rcsb.org/search?request=%7B%22query%22%3A%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22terminal%22%2C%22service%22%3A%22text%22%2C%22parameters%22%3A%7B%22attribute%22%3A%22struct.title%22%2C%22operator%22%3A%22contains_phrase%22%2C%22value%22%3A%22Crystal%20structure%20of%20dCas9%20in%20complex%20with%20sgRNA%20and%20DNA%20(CGA%20PAM)%22%7D%7D%5D%2C%22logical_operator%22%3A%22and%22%7D%5D%2C%22logical_operator%22%3A%22and%22%2C%22label%22%3A%22text%22%7D%5D%2C%22logical_operator%22%3A%22and%22%7D%2C%22return_type%22%3A%22entry%22%2C%22request_options%22%3A%7B%22paginate%22%3A%7B%22start%22%3A0%2C%22rows%22%3A25%7D%2C%22results_content_type%22%3A%5B%22experimental%22%5D%2C%22sort%22%3A%5B%7B%22sort_by%22%3A%22score%22%2C%22direction%22%3A%22desc%22%7D%5D%2C%22scoring_strategy%22%3A%22combined%22%7D%2C%22request_info%22%3A%7B%22query_id%22%3A%221bbf79971e2c97dae4f2b8ec00c7ff29%22%7D%7D"
+            class="list-group-item list-group-item-action"
+            target="_blank"
+          >
+            <h5 class="mb-1">dCas9</h5>
+            <p class="mb-1">Versión mutada de Cas9 que no corta el ADN.</p>
+          </a>
+          <a
+            href="https://www.rcsb.org/search?request=%7B%22query%22%3A%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22terminal%22%2C%22service%22%3A%22text%22%2C%22parameters%22%3A%7B%22attribute%22%3A%22struct_keywords.text%22%2C%22operator%22%3A%22contains_phrase%22%2C%22value%22%3A%22Cpf1%2C%20CRISPR-Cas%2C%20crRNA%2C%20Hydrolase-DNA-RNA%20complex%22%7D%7D%5D%2C%22logical_operator%22%3A%22and%22%7D%5D%2C%22logical_operator%22%3A%22and%22%2C%22label%22%3A%22text%22%7D%5D%2C%22logical_operator%22%3A%22and%22%7D%2C%22return_type%22%3A%22entry%22%2C%22request_options%22%3A%7B%22paginate%22%3A%7B%22start%22%3A0%2C%22rows%22%3A25%7D%2C%22results_content_type%22%3A%5B%22experimental%22%5D%2C%22sort%22%3A%5B%7B%22sort_by%22%3A%22score%22%2C%22direction%22%3A%22desc%22%7D%5D%2C%22scoring_strategy%22%3A%22combined%22%7D%2C%22request_info%22%3A%7B%22query_id%22%3A%22d0494be8cafa9d5f434e560bf6c33e77%22%7D%7D"
+            class="list-group-item list-group-item-action"
+            target="_blank"
+          >
+            <h5 class="mb-1">Cas12 (Cpf1)</h5>
+            <p class="mb-1">
+              Nucleasa que corta el ADN de manera diferente a Cas9.
+            </p>
+          </a>
+          <a
+            href="https://www.rcsb.org/search?request=%7B%22query%22%3A%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22group%22%2C%22nodes%22%3A%5B%7B%22type%22%3A%22terminal%22%2C%22service%22%3A%22full_text%22%2C%22parameters%22%3A%7B%22value%22%3A%22cas13%22%7D%7D%5D%2C%22logical_operator%22%3A%22and%22%7D%5D%2C%22logical_operator%22%3A%22and%22%2C%22label%22%3A%22full_text%22%7D%5D%2C%22logical_operator%22%3A%22and%22%7D%2C%22return_type%22%3A%22entry%22%2C%22request_options%22%3A%7B%22paginate%22%3A%7B%22start%22%3A0%2C%22rows%22%3A25%7D%2C%22results_content_type%22%3A%5B%22experimental%22%5D%2C%22sort%22%3A%5B%7B%22sort_by%22%3A%22score%22%2C%22direction%22%3A%22desc%22%7D%5D%2C%22scoring_strategy%22%3A%22combined%22%7D%2C%22request_info%22%3A%7B%22query_id%22%3A%227e8313c25fc4b2e8d923993a7e55ab07%22%7D%7D"
+            class="list-group-item list-group-item-action"
+            target="_blank"
+          >
+            <h5 class="mb-1">Cas13</h5>
+            <p class="mb-1">Nucleasa que actúa sobre ARN en lugar de ADN.</p>
+          </a>
+          <a
+            href="https://innovativegenomics.org/es/noticias/las-prote%C3%ADnas-anti-crispr-disminuyen-los-efectos-fuera-del-objetivo-cas9/"
+            class="list-group-item list-group-item-action"
+            target="_blank"
+          >
+            <h5 class="mb-1">Proteínas anti-CRISPR</h5>
+            <p class="mb-1">Proteínas que inhiben la actividad de Cas9.</p>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="contenido">
+        <div class="links">
+          <h2>Enlaces a Bases de Datos</h2>
+          <ul>
+            <li>
+              <a href="https://www.rcsb.org/" target="_blank"
+                >RCSB Protein Data Bank (PDB)</a
+              >
+              <div>
+                El Protein Data Bank (PDB) es un repositorio global que almacena
+                información sobre las estructuras 3D de proteínas, ácidos
+                nucleicos y complejos biológicos. Fue creado en 1971 y es
+                gestionado por la organización wwPDB (Worldwide Protein Data
+                Bank). El PDB permite a científicos y educadores explorar,
+                visualizar y analizar estas estructuras, promoviendo la
+                investigación básica y aplicada en biología estructural. Los
+                datos están disponibles públicamente y gratuitamente,
+                facilitando el acceso a información crucial para el avance de la
+                ciencia.
+              </div>
+            </li>
+
+            <li>
+              <a href="https://www.ncbi.nlm.nih.gov/genbank/" target="_blank"
+                >GenBank</a
+              >
+              <div>
+                GenBank es una base de datos de secuencias genéticas gestionada
+                por el National Center for Biotechnology Information (NCBI). Es
+                una colección pública de secuencias de ADN de todo el mundo, y
+                forma parte de la International Nucleotide Sequence Database
+                Collaboration, que también incluye la DNA DataBank of Japan
+                (DDBJ) y el European Nucleotide Archive (ENA). GenBank se
+                actualiza cada dos meses y contiene millones de secuencias de
+                ADN de más de 500,000 especies. Los datos se pueden buscar y
+                descargar utilizando herramientas como BLAST y Entrez
+                Nucleotide.
+              </div>
+            </li>
+            <li>
+              <a href="https://www.uniprot.org/" target="_blank">UniProt</a>
+              <div>
+                UniProt (Universal Protein Resource) es una base de datos
+                integral de información sobre secuencias y funciones de
+                proteínas. Es gestionada de manera colaborativa por el European
+                Bioinformatics Institute (EBI), el Swiss Institute of
+                Bioinformatics (SIB), y el Protein Information Resource (PIR).
+                UniProt se divide en varias secciones, las más importantes son:
+                UniProtKB/Swiss-Prot: Contiene anotaciones de alta calidad sobre
+                las funciones, estructuras y ubicaciones celulares de las
+                proteínas, curadas manualmente por expertos. UniProtKB/TrEMBL:
+                Incluye secuencias de proteínas automatizadas y no revisadas,
+                proporcionando datos que aún no han sido manualmente anotados.
+                UniRef: Ofrece clústeres de secuencias para reducir la
+                redundancia, facilitando las búsquedas rápidas y eficientes.
+                UniParc: Es un archivo completo de secuencias de proteínas,
+                incluyendo todas las versiones históricas.
+              </div>
+            </li>
+            <li>
+              <a href="https://www.ensembl.org/" target="_blank">Ensembl</a>
+              <div>
+                Ensembl es una base de datos y navegador de genomas que
+                proporciona información sobre secuencias de ADN y anotaciones
+                genómicas. Es mantenida por el European Bioinformatics Institute
+                (EBI) y el Wellcome Sanger Institute. Su objetivo es facilitar
+                el acceso y la interpretación de secuencias genómicas de una
+                amplia variedad de organismos.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>

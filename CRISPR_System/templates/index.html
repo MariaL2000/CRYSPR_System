@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador de ADN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="https://cdn.brandfetch.io/id-ZJqnE6o/w/400/h/400/theme/dark/icon.jpeg?c=1bx1737226655161id64Mup7acCsp3DqQM&t=1728402436026" alt="Logo" class="logo">
+        <a href="#contact">Información</a>
+        <div class="dropdown"> 
+            <button class="dropbtn">Tools</button>
+            <div class="dropdown-content"> 
+                <a href="{{ url_for('edicion_genetica') }}">Edición genética</a>
+                <a href="{{ url_for('crispr') }}">¿Qué es CRISPR?</a>
+            </div>
+        </div>
+        <a href="{{ url_for('diccionarios') }}">Diccionarios</a>
+    </div>
+
+    <div class="texto">
+        <h1 class="titulo">Bienvenidos a "CRISPR Tools"</h1>
+    </div>
+
+    <div class="info">
+        <p>Este proyecto es un analizador de ADN que permite a los usuarios introducir una secuencia de ADN la cual será
+            buscada en una base de datos en formato Json que contiene secuencias de ADN que presentan mutaciones. El
+            objetivo es encontrar secuencias mutadas que puedan editarse mediante la técnica de edición genética CRISPR
+            (Clustered Regulary Interspaced Short Palindromic Repeats). El proyecto explora los beneficios y el
+            desarrollo de la genoterapia en función de hacer la información obtenida y los recursos creados más factibles para todos. Además, recopila información sobre la téctica de edición genética anteriormente mencionada y busca sus elementos en las bases de datos más populares de la Bioinformática</p>
+    </div>
+
+    <div class="inpu"> 
+        <h3> Introduce tu cadena de ADN</h3>
+    </div>
+
+    <div class="recuadro">
+        <form action="/analizar" method="post">
+            <textarea name="adn" rows="10" cols="50"></textarea><br>
+            <button type="submit" class="submit-button">Analizar</button> <!-- Cambiado a botón -->
+        </form>
+    </div>
+
+    <footer>
+        <img src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Imagen descriptiva" class="footer-image">
+        <div class="footer">
+            <button class="contact">
+                <a href="mailto:mariamarrermedrano@gmail.com">Contáctame aquí</a>
+            </button>
+            <p>&copy; 2025. CRISPR_System. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

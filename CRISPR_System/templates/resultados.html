@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados del Análisis</title>
+</head>
+<body>
+    <h1>Resultados del Análisis</h1>
+    {% if resultados %}
+        <ul>
+        {% for resultado in resultados %}
+            <li>Gen: {{ resultado.gen }}, Posición: {{ resultado.posicion }}, Enfermedad: {{ resultado.enfermedad }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if resultados_crispr %}
+        <h2>Coincidencias Encontradas en CRISPR:</h2>
+        <ul>
+            {% for resultado in resultados_crispr %}
+                <li>
+                    <strong>Gen:</strong> {{ resultado.gen }}<br>
+                    <strong>Nombre de la Enfermedad:</strong> {{ resultado.nombre_enfermedad }}<br>
+                    <strong>Cadena Coincidente:</strong> {{ resultado.cadena }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron coincidencias en CRISPR.</p>
+    {% endif %}
+    
+    <a href="/">Volver</a>
+
+    <br>
+
+    </body>
+
+    <style>
+        /* Importación de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif; /* Usar la fuente de Google Fonts */
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo del encabezado */
+h1 {
+    font-size: 36px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los resultados */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+ul li {
+    background-color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el texto de error */
+p {
+    font-size: 18px;
+    color: red;
+    margin-top: 20px;
+}
+
+/* Estilo para los resultados de CRISPR */
+h2 {
+    font-size: 28px;
+    color: #333;
+    margin-top: 40px;
+}
+
+ul li strong {
+    font-weight: bold;
+    color: #555;
+}
+
+ul li {
+    padding: 15px;
+    font-size: 18px;
+}
+
+/* Estilo para el enlace "Volver" */
+a {
+    text-decoration: none;
+    background-color: #1a237e; /* Fondo azul oscuro */
+    color: white;
+    font-size: 20px;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin-top: 30px;
+    text-align: center;
+    display: inline-block;
+}
+
+a:hover {
+    background-color: #303f9f; /* Color más claro al pasar el ratón */
+}
+
+/* Estilo en pantallas pequeñas (responsive) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    ul li {
+        font-size: 16px;
+    }
+
+    a {
+        font-size: 18px;
+        padding: 12px 25px;
+    }
+}
+
+    </style>
+</html>

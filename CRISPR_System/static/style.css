@@ -1,0 +1,264 @@
+/* Reset de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(6, 6, 78);
+    padding: 8px 20px;
+}
+
+.navbar .logo {
+    width: 80px;            /* Ajusta el tamaño según el diseño de la navbar */
+    height: 80px;            /* Mantiene la proporción del logo */
+    border-radius: 300px;     /* Borde redondeado para el logo */
+    padding: 5px;            /* Espaciado interno para darle algo de margen alrededor del logo */
+    transition: transform 0.3s ease;  /* Efecto suave al cambiar el tamaño o al pasar el cursor */
+}
+
+.navbar .logo:hover {
+    transform: scale(1.1);   /* Aumenta ligeramente el logo al pasar el ratón por encima */
+}
+
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background-color: #000000;
+    border-radius: 5px;
+}
+
+/* Estilo para el botón de Tools */
+.navbar .dropbtn {
+    background-color:  rgb(6, 6, 78);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.navbar .dropbtn:hover {
+    background-color: #000000;
+    border-radius: 5px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000000;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown .dropdown-content a:hover {
+    background-color: #575757;
+}
+
+/* Texto principal */
+.texto {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.titulo {
+    font-size: 36px;
+    color: #333;
+}
+
+/* Información */
+.info {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.info p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Sección del formulario */
+.inpu {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.recuadro {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    width: 100%;
+    max-width: 600px;
+    height: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
+footer {
+    position: relative;
+    width: 100%;
+    background-color: #333;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .footer-image {
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+
+footer .footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    color: white;
+}
+
+footer .contact a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #1a237e; /* Fondo azul oscuro */
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+footer .contact a:hover {
+    background-color: #303f9f; /* Color de fondo al pasar el ratón */
+}
+
+footer p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between; /* Alinea los elementos horizontalmente */
+    }
+
+    .navbar .logo {
+        width: 100px;
+    }
+
+    .navbar a, .navbar .dropbtn {
+        font-size: 16px;
+    }
+
+    .dropdown .dropdown-content {
+        min-width: 140px;
+    }
+
+    form {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .texto h1 {
+        font-size: 28px;
+    }
+
+    .info p {
+        font-size: 16px;
+    }
+
+    .footer .contact a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .navbar a, .navbar .dropbtn {
+        font-size: 14px;
+    }
+
+    .dropdown .dropdown-content {
+        min-width: 130px;
+    }
+
+    .footer p {
+        font-size: 14px;
+    }
+}
