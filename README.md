@@ -1,5 +1,5 @@
 
-![Interface](https://github.com/user-attachments/assets/25bf5176-5dc4-414f-99a1-db5262d2edc6)
+![Interface](https://github.com/MariaL2000/CRYSPR_System/blob/main/CRISPR_System/examples/1.png))
 **Interface of the website**
 
 # Description 
