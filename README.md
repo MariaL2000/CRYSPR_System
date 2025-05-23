@@ -13,12 +13,12 @@
 
 **The web site is in spanish**
 
-![Validate a sequence of DNA]https://github.com/MariaL2000/CRYSPR_System/blob/main/CRISPR_System/examples/4.png
+![Validate a sequence of DNA](https://github.com/MariaL2000/CRYSPR_System/blob/main/CRISPR_System/examples/4.png))
 
 You can find here some useful tools to bioinformatic engineers, this project is a personal practice for the University of Informatics Sciences at 2025 year.
 
-![Example of waht you can find]https://github.com/MariaL2000/CRYSPR_System/blob/main/CRISPR_System/examples/5.png
-![Example of waht you can find 2]https://github.com/MariaL2000/CRYSPR_System/blob/main/CRISPR_System/examples/6.png
-![Example of waht you can find 3]https://github.com/MariaL2000/CRYSPR_System/blob/main/CRISPR_System/examples/7.png
+  ![expl2](https://github.com/MariaL2000/CRYSPR_System/blob/main/CRISPR_System/examples/5.png))
+  ![expl2](https://github.com/MariaL2000/CRYSPR_System/blob/main/CRISPR_System/examples/6.png))
+  ![expl2](https://github.com/MariaL2000/CRYSPR_System/blob/main/CRISPR_System/examples/7.png))
 
 
