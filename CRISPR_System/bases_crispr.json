@@ -1,0 +1,54 @@
+{
+    "TP53": {
+      "cadena": "5'-ATGGCAGGAGGTCAGGCC-3'",
+      "name": "Gen del supresor de tumores p53",
+      "descripcion": "El gen TP53 codifica la proteína p53, conocida como 'el guardián del genoma'. Esta proteína juega un papel crucial en la prevención del cáncer al detener la división celular cuando el ADN está dañado, permitiendo su reparación o induciendo la muerte celular programada si el daño es irreparable."
+    },
+    "BRCA1": {
+      "cadena": "5'-ATGGCTAGCTGCTGCTGCT-3'",
+      "name": "Gen relacionado con el cáncer de mama",
+      "descripcion": "El gen BRCA1 produce una proteína que ayuda a reparar el ADN dañado y juega un papel en la estabilidad genética de las células. Las mutaciones en este gen aumentan significativamente el riesgo de cáncer de mama y ovario."
+    },
+    
+    "EGFR": {
+      "cadena": "5'-ATGAGGAGGCTGCTGCTGCT-3'",
+      "name": "Gen del receptor del factor de crecimiento epidérmico",
+      "descripcion": "El gen EGFR codifica un receptor de superficie celular que, cuando se activa, desencadena vías de señalización que promueven la división y supervivencia celular. Las mutaciones en este gen están asociadas con varios tipos de cáncer, especialmente el cáncer de pulmón."
+    },
+    "CFTR": {
+      "cadena": "5'-ATGGGTTTCTGTTTCTGTT-3'",
+      "name": "Gen asociado a la fibrosis quística",
+      "descripcion": "El gen CFTR codifica una proteína que regula el movimiento de agua y sal dentro y fuera de las células. Las mutaciones en este gen causan fibrosis quística, una enfermedad que afecta principalmente a los pulmones y al sistema digestivo."
+    },
+    "HBB": {
+      "cadena": "5'-ATGGTGACCTGAGGTCAC-3'",
+      "name": "Gen de la beta-globina",
+      "descripcion": "El gen HBB codifica la subunidad beta de la hemoglobina, la proteína en los glóbulos rojos que transporta oxígeno. Las mutaciones en este gen pueden causar diversas hemoglobinopatías, como la anemia de células falciformes y la beta-talasemia."
+    },
+    "SOD1": {
+      "cadena": "5'-ATGCTGCTGCTGCTGCTG-3'",
+      "name": "Gen de la superóxido dismutasa 1",
+      "descripcion": "El gen SOD1 codifica una enzima que neutraliza los radicales libres dañinos en las células. Las mutaciones en este gen están asociadas con la esclerosis lateral amiotrófica (ELA) familiar, una enfermedad neurodegenerativa."
+    },
+    "MYC": {
+      "cadena": "5'-ATGAGGAGGCTGCTGCTGCT-3'",
+      "name": "Gen que codifica un factor de transcripción",
+      "descripcion": "El gen MYC codifica un factor de transcripción que regula la expresión de muchos otros genes involucrados en el crecimiento y la división celular. La sobreexpresión de MYC está asociada con varios tipos de cáncer."
+    },
+    "KRAS": {
+      "cadena": "5'-ATGGGTCGACGTCGACGTC-3'",
+      "name": "Gen que codifica una proteína G",
+      "descripcion": "El gen KRAS codifica una proteína que participa en la señalización celular. Las mutaciones en KRAS pueden llevar a un crecimiento celular descontrolado y están presentes en muchos tipos de cáncer, incluyendo el cáncer colorrectal y el cáncer de páncreas."
+    },
+    "PTEN": {
+      "cadena": "5'-ATGGGAGGAGGTCAGGCC-3'",
+      "name": "Gen supresor de tumores",
+      "descripcion": "El gen PTEN codifica una enzima que ayuda a regular el ciclo celular. Actúa como un supresor de tumores al inhibir la vía de señalización PI3K/AKT/mTOR, que promueve el crecimiento y la supervivencia celular. Las mutaciones en PTEN están asociadas con varios tipos de cáncer."
+    },
+    "ALK": {
+      "cadena": "5'-ATGACGACGACGACGACG-3'",
+      "name": "Gen relacionado con el cáncer de pulmón",
+      "descripcion": "El gen ALK codifica un receptor tirosina quinasa que juega un papel en el desarrollo del cerebro. Las alteraciones en este gen, como las fusiones con otros genes, pueden llevar a la activación constitutiva de la quinasa y contribuir al desarrollo de ciertos tipos de cáncer, especialmente el cáncer de pulmón de células no pequeñas."
+    }
+  }
+  

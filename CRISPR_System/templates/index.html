@@ -1,59 +1,260 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analizador de ADN</title>
+    <title>CRISPR Tools - Analizador de ADN</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
-
 <body>
+    <!-- Navbar -->
     <div class="navbar">
-        <img src="https://cdn.brandfetch.io/id-ZJqnE6o/w/400/h/400/theme/dark/icon.jpeg?c=1bx1737226655161id64Mup7acCsp3DqQM&t=1728402436026" alt="Logo" class="logo">
-        <a href="#contact">Información</a>
-        <div class="dropdown"> 
-            <button class="dropbtn">Tools</button>
-            <div class="dropdown-content"> 
-                <a href="{{ url_for('edicion_genetica') }}">Edición genética</a>
-                <a href="{{ url_for('crispr') }}">¿Qué es CRISPR?</a>
+        <img src="https://images.icon-icons.com/4277/PNG/512/finance_business_analysis_analytics_science_data_icon_266082.png" alt="Logo" class="logo">
+        <a href="#informacion"><i class="fas fa-info-circle"></i> Información</a>
+        <div class="dropdown">
+            <button class="dropbtn"><i class="fas fa-tools"></i> Tools</button>
+            <div class="dropdown-content">
+
+                <a href="{{ url_for('crispr') }}"><i class="fas fa-microscope"></i> ¿Qué es CRISPR?</a>
             </div>
         </div>
-        <a href="{{ url_for('diccionarios') }}">Diccionarios</a>
+        <a href="{{ url_for('diccionarios') }}"><i class="fas fa-book"></i> Diccionarios</a>
     </div>
 
+    <!-- Sección de bienvenida -->
     <div class="texto">
         <h1 class="titulo">Bienvenidos a "CRISPR Tools"</h1>
+        <div class="hero-buttons">
+            <a href="#adn-input" class="btn btn-primary"><i class="fas fa-dna"></i> Analizar ADN</a>
+            <a href="#informacion" class="btn btn-secondary"><i class="fas fa-info-circle"></i> Más información</a>
+        </div>
     </div>
 
+    
+
+
+
+
+
+    <!-- Sección del modelo 3D -->
+<section id="modelo-3d" class="modelo-section">
+    <div class="modelo-container">
+        <h2 class="modelo-title">Visualización 3D de CRISPR-Cas9</h2>
+        <div class="modelo-wrapper">
+            <iframe title="CRISPR-Cas9" 
+                   frameborder="0" 
+                   allowfullscreen 
+                   mozallowfullscreen="true" 
+                   webkitallowfullscreen="true" 
+                   allow="autoplay; fullscreen; xr-spatial-tracking" 
+                   xr-spatial-tracking 
+                   execution-while-out-of-viewport 
+                   execution-while-not-rendered 
+                   web-share 
+                   src="https://sketchfab.com/models/014a90b380444d788811ebd72c667053/embed">
+            </iframe>
+        </div>
+        <p class="modelo-description">Explora la estructura molecular del complejo CRISPR-Cas9, la herramienta revolucionaria de edición genética. Interactúa con el modelo para entender cómo esta "tijera molecular" se une al ADN para realizar cortes precisos.</p>
+        <div class="modelo-attribution">
+            <p>Modelo 3D: <a href="https://sketchfab.com/3d-models/crispr-cas9-014a90b380444d788811ebd72c667053" target="_blank" rel="nofollow">CRISPR-Cas9</a> por <a href="https://sketchfab.com/ivandinh" target="_blank" rel="nofollow">Ivan DINH</a> en <a href="https://sketchfab.com" target="_blank" rel="nofollow">Sketchfab</a></p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+   
+    <!-- Sección de información principal -->
     <div class="info">
-        <p>Este proyecto es un analizador de ADN que permite a los usuarios introducir una secuencia de ADN la cual será
-            buscada en una base de datos en formato Json que contiene secuencias de ADN que presentan mutaciones. El
-            objetivo es encontrar secuencias mutadas que puedan editarse mediante la técnica de edición genética CRISPR
-            (Clustered Regulary Interspaced Short Palindromic Repeats). El proyecto explora los beneficios y el
-            desarrollo de la genoterapia en función de hacer la información obtenida y los recursos creados más factibles para todos. Además, recopila información sobre la téctica de edición genética anteriormente mencionada y busca sus elementos en las bases de datos más populares de la Bioinformática</p>
+        <p>Este proyecto es un analizador de ADN que permite a los usuarios introducir una secuencia de ADN la cual será 
+           buscada en una base de datos en formato Json que contiene secuencias de ADN que presentan mutaciones. El 
+           objetivo es encontrar secuencias mutadas que puedan editarse mediante la técnica de edición genética CRISPR 
+           (Clustered Regulary Interspaced Short Palindromic Repeats). El proyecto explora los beneficios y el 
+           desarrollo de la genoterapia en función de hacer la información obtenida y los recursos creados más factibles para todos. 
+           Además, recopila información sobre la téctica de edición genética anteriormente mencionada y busca sus elementos 
+           en las bases de datos más populares de la Bioinformática.</p>
     </div>
 
-    <div class="inpu"> 
-        <h3> Introduce tu cadena de ADN</h3>
+    <!-- Sección de información detallada -->
+    <section id="informacion" class="information-section">
+        <div class="info-container">
+            <div class="info-header">
+                <h2>Sobre CRISPR Tools</h2>
+                <div class="section-divider"></div>
+                <p class="info-subtitle">Explorando el futuro de la edición genética</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>Tecnología CRISPR</h3>
+                    <p>CRISPR-Cas9 es una tecnología revolucionaria que permite editar genes con precisión. Funciona como unas "tijeras moleculares" que pueden cortar el ADN en lugares específicos, permitiendo eliminar, añadir o alterar secciones del genoma.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Investigación Genómica</h3>
+                    <p>Nuestra plataforma facilita la investigación genómica proporcionando herramientas para analizar secuencias de ADN, identificar mutaciones y diseñar estrategias de edición genética utilizando la tecnología CRISPR.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Aplicaciones Médicas</h3>
+                    <p>La edición genética tiene un enorme potencial en medicina para tratar enfermedades genéticas, desarrollar nuevas terapias contra el cáncer y crear modelos de enfermedades para investigación.</p>
+                </div>
+            </div>
+            
+            <div class="info-timeline">
+                <h3>Evolución de la Tecnología CRISPR</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>1987</h4>
+                            <p>Descubrimiento de secuencias CRISPR en bacterias</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>2005</h4>
+                            <p>Identificación de su función como sistema inmune bacteriano</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>2012</h4>
+                            <p>Desarrollo de CRISPR-Cas9 como herramienta de edición genética</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>2020</h4>
+                            <p>Premio Nobel de Química para Emmanuelle Charpentier y Jennifer Doudna</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Actualidad</h4>
+                            <p>Ensayos clínicos para tratar enfermedades genéticas y cáncer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-cta">
+                <h3>Únete a la revolución genética</h3>
+                <p>Explora nuestras herramientas y recursos para adentrarte en el fascinante mundo de la edición genética y sus aplicaciones.</p>
+                <a href="{{ url_for('crispr') }}" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Descubrir más sobre CRISPR</a>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Tarjetas con iconos SVG en grid -->
+    <div class="cards-grid">
+        <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <h3>Análisis de ADN</h3>
+            <p>Identifica secuencias genéticas específicas</p>
+        </div>
+        <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z"></path>
+            </svg>
+            <h3>Detección de Enfermedades</h3>
+            <p>Encuentra marcadores genéticos asociados a enfermedades</p>
+        </div>
+        <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H8c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1z"></path>
+            </svg>
+            <h3>Tecnología CRISPR</h3>
+            <p>Aprende sobre la edición genética de vanguardia</p>
+        </div>
+        <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
+            </svg>
+            <h3>Información Educativa</h3>
+            <p>Recursos para entender la genética y sus aplicaciones</p>
+        </div>
+        <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"></path>
+            </svg>
+            <h3>Base de Datos</h3>
+            <p>Accede a información sobre genes y mutaciones</p>
+        </div>
+        <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+            </svg>
+            <h3>Personalizado</h3>
+            <p>Análisis adaptado a tus necesidades específicas</p>
+        </div>
     </div>
 
+    <!-- Sección de párrafos con textos al lado -->
+    <div class="info-section">
+        <div class="info-column">
+            <h2>¿Qué es el ADN?</h2>
+            <p>El ADN (ácido desoxirribonucleico) es una molécula compleja que contiene toda la información genética de un organismo. Esta información determina todas las características biológicas de un ser vivo, desde su apariencia física hasta su susceptibilidad a ciertas enfermedades.</p>
+        </div>
+        <div class="info-column">
+            <h2>Importancia de la Edición Genética</h2>
+            <p>La edición genética permite modificar el ADN con precisión, ofreciendo la posibilidad de cor
+                <h2>Importancia de la Edición Genética</h2>
+                <p>La edición genética permite modificar el ADN con precisión, ofreciendo la posibilidad de corregir mutaciones que causan enfermedades. Esta tecnología revolucionaria tiene el potencial de transformar la medicina y mejorar la calidad de vida de millones de personas en todo el mundo.</p>
+            </div>
+        </div>
+    
+        <!-- Sección de entrada de ADN -->
+<div id="adn-input" class="inpu">
+    <h3>Introduce tu cadena de ADN</h3>
     <div class="recuadro">
         <form action="/analizar" method="post">
-            <textarea name="adn" rows="10" cols="50"></textarea><br>
-            <button type="submit" class="submit-button">Analizar</button> <!-- Cambiado a botón -->
+            <textarea name="adn" id="adn" placeholder="Introduce tu secuencia de ADN aquí (solo caracteres A, T, G, C)"></textarea>
+            <button type="submit" class="btn-submit">Analizar</button>
         </form>
     </div>
+</div>
 
-    <footer>
-        <img src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Imagen descriptiva" class="footer-image">
-        <div class="footer">
-            <button class="contact">
-                <a href="mailto:mariamarrermedrano@gmail.com">Contáctame aquí</a>
-            </button>
-            <p>&copy; 2025. CRISPR_System. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-</body>
-
-</html>
+        
+    
+        <!-- Footer -->
+        <footer>
+            <img src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Imagen descriptiva" class="footer-image">
+            <div class="footer">
+                <button class="contact">
+                    <a href="mailto:mariamarrermedrano@gmail.com">Contáctame aquí</a>
+                </button>
+                <p>&copy; 2025. CRISPR_System. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+    </html>
+    

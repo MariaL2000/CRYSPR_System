@@ -1,144 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Resultados del Análisis</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados del Análisis de ADN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Resultados del Análisis</h1>
-    {% if resultados %}
-        <ul>
-        {% for resultado in resultados %}
-            <li>Gen: {{ resultado.gen }}, Posición: {{ resultado.posicion }}, Enfermedad: {{ resultado.enfermedad }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="https://images.icon-icons.com/4277/PNG/512/finance_business_analysis_analytics_science_data_icon_266082.png" alt="Logo" class="logo">
+        <a href="#informacion"><i class="fas fa-info-circle"></i> Información</a>
+        <div class="dropdown">
+            <button class="dropbtn"><i class="fas fa-tools"></i> Tools</button>
+            <div class="dropdown-content">
 
+                <a href="{{ url_for('crispr') }}"><i class="fas fa-microscope"></i> ¿Qué es CRISPR?</a>
+            </div>
+        </div>
+        <a href="{{ url_for('diccionarios') }}"><i class="fas fa-book"></i> Diccionarios</a>
+    </div>
 
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    <!-- Hero Section -->
+    <header class="hero results-hero">
+        <div class="hero-content">
+            <h1 class="titulo">Resultados del Análisis</h1>
+            <p class="subtitulo">Análisis completo de la secuencia de ADN proporcionada</p>
+        </div>
+    </header>
 
-    {% if resultados_crispr %}
-        <h2>Coincidencias Encontradas en CRISPR:</h2>
-        <ul>
-            {% for resultado in resultados_crispr %}
-                <li>
-                    <strong>Gen:</strong> {{ resultado.gen }}<br>
-                    <strong>Nombre de la Enfermedad:</strong> {{ resultado.nombre_enfermedad }}<br>
-                    <strong>Cadena Coincidente:</strong> {{ resultado.cadena }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No se encontraron coincidencias en CRISPR.</p>
-    {% endif %}
-    
-    <a href="/">Volver</a>
+    <!-- Contenedor principal -->
+    <main class="container">
+        <!-- Sección de entrada de ADN -->
+        <section class="adn-input-section">
+            <div class="card" id="informacion">
+                <h3>Secuencia de ADN analizada</h3>
+                <div class="adn-display">
+                    <p>{{ adn_input }}</p>
+                </div>
+                <a href="/" class="btn">Analizar otra secuencia</a>
+            </div>
+        </section>
 
-    <br>
+        <!-- Mensaje de error si existe -->
+        {% if error %}
+        <section class="error-section">
+            <div class="card error-card">
+                <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+                <h3>Error en la secuencia</h3>
+                <p>{{ error }}</p>
+            </div>
+        </section>
+        {% endif %}
 
-    </body>
+        <!-- Resultados CRISPR -->
+        {% if resultados_crispr %}
+        <section class="results-section">
+            <h2 class="section-title">Genes identificados</h2>
+            <p class="section-description">Se han encontrado {{ resultados_crispr|length }} coincidencias en la base de datos CRISPR.</p>
+            
+            <div class="cards-grid">
+                {% for resultado in resultados_crispr %}
+                <div class="card result-card">
+                    <div class="result-header">
+                        <h3>{{ resultado.gen }}</h3>
+                        <span class="badge {% if resultado.coincidencia_parcial %}partial{% else %}complete{% endif %}">
+                            {% if resultado.coincidencia_parcial %}Coincidencia Parcial{% else %}Coincidencia Completa{% endif %}
+                        </span>
+                    </div>
+                    <h4>{{ resultado.nombre_enfermedad }}</h4>
+                    
+                    <div class="result-details">
+                        <div class="detail-item">
+                            <h5>Secuencia original:</h5>
+                            <p class="sequence">{{ resultado.cadena }}</p>
+                        </div>
+                        
+                        {% if resultado.coincidencia_parcial %}
+                        <div class="detail-item">
+                            <h5>Fragmento coincidente:</h5>
+                            <p class="sequence highlight">{{ resultado.cadena_coincidente }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="detail-item">
+                            <h5>Descripción:</h5>
+                            <p>{{ resultado.descripcion }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% elif not error %}
+        <section class="no-results-section">
+            <div class="card no-results-card">
+                <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+                </svg>
+                <h3>No se encontraron coincidencias</h3>
+                <p>La secuencia de ADN proporcionada no coincide con ningún gen en nuestra base de datos.</p>
+            </div>
+        </section>
+        {% endif %}
 
-    <style>
-        /* Importación de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        <!-- Sección de información adicional -->
+        <section class="info-cta">
+            <h3>¿Quieres saber más sobre la edición genética?</h3>
+            <p>Descubre cómo la tecnología CRISPR está revolucionando la medicina y la biotecnología, permitiendo editar el ADN con precisión nunca antes vista.</p>
+            <div class="hero-buttons">
+                <a href="/crispr" class="btn">Aprender sobre CRISPR</a>
+                <a href="/" class="btn btn-outline">Volver al inicio</a>
+            </div>
+        </section>
+    </main>
 
-/* Estilos generales */
-body {
-    font-family: 'Roboto', sans-serif; /* Usar la fuente de Google Fonts */
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Estilo del encabezado */
-h1 {
-    font-size: 36px;
-    color: #000000;
-    margin-bottom: 20px;
-}
-
-/* Estilo para los resultados */
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    font-size: 20px;
-    color: #333;
-}
-
-ul li {
-    background-color: white;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo para el texto de error */
-p {
-    font-size: 18px;
-    color: red;
-    margin-top: 20px;
-}
-
-/* Estilo para los resultados de CRISPR */
-h2 {
-    font-size: 28px;
-    color: #333;
-    margin-top: 40px;
-}
-
-ul li strong {
-    font-weight: bold;
-    color: #555;
-}
-
-ul li {
-    padding: 15px;
-    font-size: 18px;
-}
-
-/* Estilo para el enlace "Volver" */
-a {
-    text-decoration: none;
-    background-color: #1a237e; /* Fondo azul oscuro */
-    color: white;
-    font-size: 20px;
-    padding: 15px 30px;
-    border-radius: 5px;
-    margin-top: 30px;
-    text-align: center;
-    display: inline-block;
-}
-
-a:hover {
-    background-color: #303f9f; /* Color más claro al pasar el ratón */
-}
-
-/* Estilo en pantallas pequeñas (responsive) */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 28px;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
-
-    ul li {
-        font-size: 16px;
-    }
-
-    a {
-        font-size: 18px;
-        padding: 12px 25px;
-    }
-}
-
-    </style>
+    <!-- Footer -->
+    <footer>
+        <img src="{{ url_for('static', filename='dna-bg.jpg') }}" alt="ADN Background" class="footer-image">
+        <div class="footer">
+            <p>&copy; 2023 ADNAnalyzer. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
 </html>

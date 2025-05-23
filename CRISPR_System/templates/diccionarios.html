@@ -3,121 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diccionario de Edición Genética</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: rgb(6, 6, 78);;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #4CAF50;
-        }
-        .term {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-        .term h3 {
-            margin: 0;
-            color: #4CAF50;
-        }
-        .term p {
-            margin: 5px 0;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgb(6, 6, 78);
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <title>Diccionario Genético | CRISPR Tools</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="https://images.icon-icons.com/4277/PNG/512/finance_business_analysis_analytics_science_data_icon_266082.png" alt="Logo" class="logo">
+        <a href="/"><i class="fas fa-home"></i> Inicio</a>
+        <div class="dropdown">
+            <button class="dropbtn"><i class="fas fa-tools"></i> Tools</button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('crispr') }}"><i class="fas fa-microscope"></i> ¿Qué es CRISPR?</a>
+            </div>
+        </div>
+        <a href="{{ url_for('diccionarios') }}" class="active"><i class="fas fa-book"></i> Diccionarios</a>
+    </div>
 
-<header>
-    <h1>Diccionario de términos</h1>
-</header>
+    <!-- Sección de bienvenida -->
+    <div class="texto">
+        <h1 class="titulo">Diccionario Genético</h1>
+        <p class="subtitulo">Explora nuestra base de datos de genes, mutaciones y secuencias CRISPR</p>
+    </div>
 
-<div class="container">
-    <article>
-        <div class="term">
-            <h3>CRISPR-Cas9</h3>
-            <p>Una herramienta de edición genética que permite realizar cortes específicos en el ADN. Utiliza una guía de ARN para localizar la secuencia deseada y una enzima Cas9 para realizar el corte.</p>
+    <!-- Sección de búsqueda -->
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Buscar genes, enfermedades o secuencias..." class="search-input">
+            </div>
+            <div class="filter-options">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="disease">Enfermedades</button>
+                <button class="filter-btn" data-filter="gene">Genes</button>
+            </div>
         </div>
-        <div class="term">
-            <h3>TALENs</h3>
-            <p>Proteínas que pueden ser diseñadas para unirse a secuencias específicas de ADN. Permiten realizar cortes en el ADN, similar a CRISPR, pero su diseño es más complejo.</p>
-        </div>
-        <div class="term">
-            <h3>ZFNs</h3>
-            <p>Nucleasas de dedos de zinc que permiten la modificación de genes específicos. Utilizan un diseño de proteínas que se une a secuencias de ADN específicas.</p>
-        </div>
-        <div class="term">
-            <h3>Prime Editing</h3>
-            <p>Técnica de edición genética que permite realizar ediciones más precisas en el ADN sin causar cortes de doble hebra. Utiliza una combinación de una enzima de edición y una guía de ARN.</p>
-        </div>
-        <div class="term">
-            <h3>Edición de Base</h3>
-            <p>Técnica que permite cambiar una sola base de ADN por otra, lo que puede corregir mutaciones sin causar cortes en el ADN.</p>
-        </div>
-        <div class="term">
-            <h3>Edición Epigenética</h3>
-            <p>Modificación de la expresión génica sin alterar la secuencia de ADN. Se centra en cambios químicos que afectan cómo se expresa un gen.</p>
-        </div>
-        <div class="term">
-            <h3>Genoma</h3>
-            <p>Conjunto completo de material genético de un organismo, incluyendo todos sus genes y secuencias no codificantes.</p>
-        </div>
-        <div class="term">
-            <h3>Mutación</h3>
-            <p>Cambio en la secuencia de ADN que puede afectar la función de un gen. Las mutaciones pueden ser heredadas o adquiridas.</p>
-        </div>
-        <div class="term">
-            <h3>Transgénico</h3>
-            <p>Organismo que ha sido modificado genéticamente para incluir un gen de otra especie. Se utiliza comúnmente en agricultura para mejorar características de cultivos.</p>
-        </div>
-        <div class="term">
-            <h3>Terapia Génica</h3>
-            <p>Tratamiento que implica la modificación del material genético de una persona para tratar o prevenir enfermedades. Puede incluir la inserción, eliminación o modificación de genes.</p>
-        </ ```html
-        </div>
-        <div class="term">
-            <h3>Biotecnología</h3>
-            <p>Uso de organismos vivos o sus componentes para desarrollar productos y procesos que beneficien a la humanidad. Incluye la edición genética como una de sus herramientas clave.</p>
-        </div>
-        <div class="term">
-            <h3>Ética en la Edición Genética</h3>
-            <p>Conjunto de consideraciones morales y sociales que surgen en relación con la modificación genética, incluyendo el debate sobre la modificación de embriones y el acceso equitativo a las tecnologías.</p>
-        </div>
-        <div class="term">
-            <h3>Seguridad Alimentaria</h3>
-            <p>Condición que asegura que todas las personas tengan acceso a alimentos suficientes, seguros y nutritivos. La edición genética puede contribuir a mejorar la producción agrícola y la resistencia de cultivos.</p>
-        </div>
-    </article>
-</div>
+    </section>
 
-<footer>
-    <p>&copy; 2025. CRISPR_System. Todos los derechos reservados.</p>
-</footer>
+    <!-- Sección principal del diccionario -->
+    <section class="dictionary-section">
+        <div class="dictionary-container">
+            <div class="dictionary-grid">
+                {% for gen, info in bases_crispr.items() %}
+                <div class="dictionary-card" data-gen="{{ gen }}" data-name="{{ info.name|lower }}">
+                    <div class="card-header">
+                        <h3 class="gene-id">{{ gen }}</h3>
+                        <span class="gene-badge">Gen</span>
+                    </div>
+                    <h4 class="disease-name">{{ info.name }}</h4>
+                    <div class="card-content">
+                        <div class="sequence-container">
+                            <h5><i class="fas fa-dna"></i> Secuencia:</h5>
+                            <div class="sequence-display">
+                                <code class="sequence-code">{{ info.cadena }}</code>
+                                <button class="copy-btn" data-sequence="{{ info.cadena }}">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="description-container">
+                            <h5><i class="fas fa-info-circle"></i> Descripción:</h5>
+                            <p class="description-text">{{ info.get('descripcion', 'No hay descripción disponible para este gen.') }}</p>
+                        </div>
+                        {% if info.get('referencias') %}
+                        <div class="references-container">
+                            <h5><i class="fas fa-external-link-alt"></i> Referencias:</h5>
+                            <ul class="references-list">
+                                {% for ref in info.referencias %}
+                                <li><a href="{{ ref.url }}" target="_blank">{{ ref.titulo }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <button class="details-btn">Ver detalles completos</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
 
+            <!-- Mensaje de no resultados -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <div class="no-results-content">
+                    <i class="fas fa-search-minus"></i>
+                    <h3>No se encontraron resultados</h3>
+                    <p>Intenta con otros términos de búsqueda o elimina los filtros aplicados.</p>
+                    <button id="resetSearch" class="reset-btn">Reiniciar búsqueda</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de información adicional -->
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-header">
+                <h2>Recursos Genéticos</h2>
+                <div class="section-divider"></div>
+                <p class="info-subtitle">Bases de datos y herramientas para investigación genética</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>GenBank</h3>
+                    <p>Base de datos de secuencias genéticas del NIH, con acceso abierto a más de 200 millones de secuencias.</p>
+                    <a href="https://www.ncbi.nlm.nih.gov/genbank/" target="_blank" class="resource-link">Visitar <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>ENSEMBL</h3>
+                    <p>Proyecto que proporciona anotación automática del genoma humano y otros genomas eucariotas.</p>
+                    <a href="https://www.ensembl.org/" target="_blank" class="resource-link">Visitar <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>OMIM</h3>
+                    <p>Catálogo de genes humanos y trastornos genéticos, con enfoque en la relación entre genotipo y fenotipo.</p>
+                    <a href="https://www.omim.org/" target="_blank" class="resource-link">Visitar <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>ClinVar</h3>
+                    <p>Base de datos de relaciones entre variación genética humana y fenotipos, con interpretaciones clínicas.</p>
+                    <a href="https://www.ncbi.nlm.nih.gov/clinvar/" target="_blank" class="resource-link">Visitar <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección CTA -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2>¿Listo para analizar tu secuencia de ADN?</h2>
+                <p>Utiliza nuestra herramienta para identificar genes y posibles mutaciones en secuencias de ADN.</p>
+                <a href="/" class="btn btn-primary"><i class="fas fa-dna"></i> Ir al analizador</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Imagen descriptiva" class="footer-image">
+        <div class="footer">
+            <button class="contact">
+                <a href="mailto:mariamarrermedrano@gmail.com">Contáctame aquí</a>
+            </button>
+            <p>&copy; 2025. CRISPR_System. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad de búsqueda
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const dictionaryCards = document.querySelectorAll('.dictionary-card');
+            const noResults = document.getElementById('noResults');
+            const resetButton = document.getElementById('resetSearch');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            // Función para filtrar tarjetas
+            function filterCards() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                
+                let resultsFound = false;
+                
+                dictionaryCards.forEach(card => {
+                    const genId = card.dataset.gen.toLowerCase();
+                    const genName = card.dataset.name.toLowerCase();
+                    const cardContent = card.textContent.toLowerCase();
+                    
+                    // Aplicar filtro de búsqueda
+                    const matchesSearch = searchTerm === '' || 
+                                         genId.includes(searchTerm) || 
+                                         genName.includes(searchTerm) || 
+                                         cardContent.includes(searchTerm);
+                    
+                    // Aplicar filtro de categoría
+                    const matchesFilter = activeFilter === 'all' || 
+                                         (activeFilter === 'disease' && genName.includes('enfermedad')) ||
+                                         (activeFilter === 'gene');
+                    
+                    if (matchesSearch && matchesFilter) {
+                        card.style.display = 'block';
+                        resultsFound = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                noResults.style.display = resultsFound ? 'none' : 'block';
+            }
+            
+            // Event listeners
+            searchInput.addEventListener('input', filterCards);
+            
+            resetButton.addEventListener('click', function() {
+                searchInput.value = '';
+                document.querySelector('.filter-btn[data-filter="all"]').click();
+                filterCards();
+            });
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Actualizar estado activo
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Aplicar filtro
+                    filterCards();
+                });
+            });
+            
+            // Funcionalidad de copiar secuencia
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const sequence = this.dataset.sequence;
+                    navigator.clipboard.writeText(sequence).then(() => {
+                        // Cambiar temporalmente el icono para indicar éxito
+                        const icon = this.querySelector('i');
+                        icon.classList.remove('fa-copy');
+                        icon.classList.add('fa-check');
+                        
+                        setTimeout(() => {
+                            icon.classList.remove('fa-check');
+                            icon.classList.add('fa-copy');
+                        }, 2000);
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

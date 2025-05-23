@@ -1,142 +1,158 @@
-from flask import Flask, request, render_template
+import os
+import json
 import re
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
+
+# Función para cargar datos desde archivos JSON
+def cargar_json(nombre_archivo):
+    """Carga datos desde un archivo JSON"""
+    ruta_archivo = os.path.join(os.path.dirname(__file__), nombre_archivo)
+    try:
+        with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
+            return json.load(archivo)
+    except FileNotFoundError:
+        print(f"Error: No se pudo encontrar el archivo {nombre_archivo}")
+        return {}
+    except json.JSONDecodeError:
+        print(f"Error: El archivo {nombre_archivo} no contiene JSON válido")
+        return {}
+
+# Cargar datos desde archivo JSON
+bases_crispr = cargar_json('bases_crispr.json')
+
+# Textos informativos para las páginas
+textos_informativos = {
+    "crispr": """
+        <h2>Tecnología CRISPR</h2>
+        <p>CRISPR (Repeticiones Palindrómicas Cortas Agrupadas y Regularmente Espaciadas) es una tecnología revolucionaria de edición genética que permite a los científicos modificar secuencias de ADN con precisión.</p>
+        <p>Funciona como unas "tijeras moleculares" que pueden cortar el ADN en lugares específicos, permitiendo eliminar, añadir o alterar secciones del genoma.</p>
+        <p>Esta tecnología tiene el potencial de transformar la medicina al permitir el tratamiento de enfermedades genéticas, el desarrollo de nuevas terapias contra el cáncer y la creación de organismos modificados genéticamente.</p>
+        <p>CRISPR se basa en un sistema inmune natural encontrado en bacterias, que ha sido adaptado como una poderosa herramienta de ingeniería genética.</p>
+    """
+}
+
+def es_adn(adn):
+    """Verifica si una cadena contiene solo caracteres válidos de ADN (A, T, C, G)"""
+    if not adn:  # Verificar si la cadena está vacía
+        return False
+    caracteres = {'A', 'T', 'C', 'G'}
+    for i in adn.upper():
+        if i not in caracteres:
+            return False
+    return True
+
+def limpiar_secuencia_crispr(secuencia):
+    """Elimina los caracteres no nucleótidos de la secuencia CRISPR."""
+    # Eliminar el formato 5'- y -3' y cualquier otro carácter no ATCG
+    return re.sub(r'[^ATCG]', '', secuencia.upper())
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-# Diccionario de enfermedades genéticas (ejemplo)
-enfermedades_geneticas = {
-    "BRCA1": {"nombre": "Cáncer de mama", "secuencia": "AGCT"},
-    "CFTR": {"nombre": "Fibrosis quística", "secuencia": "TGTT"},
-    "HTT": {"nombre": "Enfermedad de Huntington", "secuencia": "CAG"},
-    "DMD": {"nombre": "Distrofia Muscular de Duchenne", "secuencia": "GGA"},
-    "HBB": {"nombre": "Anemia de Células Falciformes", "secuencia": "GTG"},
-    "FBN1": {"nombre": "Síndrome de Marfan", "secuencia": "TGG"},
-    "PAH": {"nombre": "Fenilcetonuria", "secuencia": "GAA"},
-    "GALT": {"nombre": "Galactosemia", "secuencia": "GCT"},
-    "ATP7B": {"nombre": "Enfermedad de Wilson", "secuencia": "TAT"},
-    "SMN1": {"nombre": "Atrofia Muscular Espinal", "secuencia": "TGA"},
-    "COL1A1": {"nombre": "Osteogénesis Imperfecta", "secuencia": "GGT"},
-    "FMR1": {"nombre": "Síndrome de X Frágil", "secuencia": "CGG"},
-    "GAA": {"nombre": "Enfermedad de Pompe", "secuencia": "GAA"},
-    "NPC1": {"nombre": "Enfermedad de Niemann-Pick", "secuencia": "TCT"},
-    "TSC1": {"nombre": "Esclerosis Tuberosa", "secuencia": "TGC"},
-    "PKD1": {"nombre": "Enfermedad Poliquística Renal", "secuencia": "CCT"},
-    "MLH1": {"nombre": "Síndrome de Lynch", "secuencia": "AAG"},
-    "RET": {"nombre": "Neoplasia Endocrina Múltiple", "secuencia": "GAC"},
-    "VHL": {"nombre": "Síndrome de Von Hippel-Lindau", "secuencia": "GTC"},
-    "NF1": {"nombre": "Neurofibromatosis Tipo 1", "secuencia": "TGA"},
-    "RB1": {"nombre": "Retinoblastoma", "secuencia": "GCG"},
-    "WT1": {"nombre": "Tumor de Wilms", "secuencia": "GGA"},
-    "P53": {"nombre": "Síndrome de Li-Fraumeni", "secuencia": "TGC"},
-    "APC": {"nombre": "Poliposis Adenomatosa Familiar", "secuencia": "GGA"},
-    "SMAD4": {"nombre": "Síndrome de Juvenil Poliposis", "secuencia": "GCT"},
-    "PTEN": {"nombre": "Síndrome de Cowden", "secuencia": "TTA"},
-    "CDH1": {"nombre": "Cáncer Gástrico Hereditario", "secuencia": "GTT"},
-    "MEN1": {"nombre": "Neoplasia Endocrina Múltiple Tipo 1", "secuencia": "TGC"},
-    "STK11": {"nombre": "Síndrome de Peutz-Jeghers", "secuencia": "GCT"},
-    "TP53": {"nombre": "Síndrome de Li-Fraumeni", "secuencia": "TGC"}
-}
-
-bases_crispr = {
-    "TP53": {
-        "cadena": "5'-ATGGCAGGAGGTCAGGCC-3'",
-        "name": "Gen del supresor de tumores p53"
-    },
-    "BRCA1": {
-        "cadena": "5'-ATGGCTAGCTGCTGCTGCT-3'",
-        "name": "Gen relacionado con el cáncer de mama"
-    },
-    "EGFR": {
-        "cadena": "5'-ATGAGGAGGCTGCTGCTGCT-3'",
-        "name": "Gen del receptor del factor de crecimiento epidérmico"
-    },
-    "CFTR": {
-        "cadena": "5'-ATGGGTTTCTGTTTCTGTT-3'",
-        "name": "Gen asociado a la fibrosis quística"
-    },
-    "HBB": {
-        "cadena": "5'-ATGGTGACCTGAGGTCAC-3'",
-        "name": "Gen de la beta-globina"
-    },
-    "SOD1": {
-        "cadena": "5'-ATGCTGCTGCTGCTGCTG-3'",
-        "name": "Gen de la superóxido dismutasa 1"
-    },
-    "MYC": {
-        "cadena": "5'-ATGAGGAGGCTGCTGCTGCT-3'",
-        "name": "Gen que codifica un factor de transcripción"
-    },
-    "KRAS": {
-        "cadena": "5'-ATGGGTCGACGTCGACGTC-3'",
-        "name": "Gen que codifica una proteína G"
-    },
-    "PTEN": {
-        "cadena": "5'-ATGGGAGGAGGTCAGGCC-3'",
-        "name": "Gen supresor de tumores"
-    },
-    "ALK": {
-        "cadena": "5'-ATGACGACGACGACGACG-3'",
-        "name": "Gen relacionado con el cáncer de pulmón"
-    }
-}
-
-
-def es_adn(adn):
-    caracteres= {'A', 'T', 'C', 'G'}
-    for i in adn.upper():
-        if i not in caracteres:
-            return False
-    else:
-        return True
-    
 @app.route('/analizar', methods=['POST'])
 def analizar():
-    
-    if request.method=='POST':
-        adn= request.form['adn'].strip().upper()
-        resultados = []
-        resultados_crispr=[]
+    if request.method == 'POST':
+        adn = request.form['adn'].strip().upper()
+        resultados_crispr = []
         
-    if es_adn(adn):
-        for gen, info in enfermedades_geneticas.items():
-            secuencia = info['secuencia']
-            for match in re.finditer(secuencia, adn):
-                resultados.append({
-                    "gen": gen,
-                    "posicion": match.start(),
-                    "enfermedad": info['nombre']})
+        if es_adn(adn):
+            # Buscar secuencias CRISPR
+            for gen, info in bases_crispr.items():
+                # Limpiar la cadena CRISPR para comparación
+                cadena_limpia = limpiar_secuencia_crispr(info['cadena'])
                 
-        for gen, info in bases_crispr.items():
-            cadena = info['cadena']
-            if cadena in adn:  # Verificar si la cadena está en la cadena de ADN
-                resultados_crispr.append({
-                    "gen": gen,
-                    "nombre_enfermedad": info['name'],
-                    "cadena": cadena
-                })
+                # Verificar si la cadena limpia no está vacía
+                if not cadena_limpia:
+                    continue
+                
+                # Buscar coincidencias parciales (substrings)
+                if len(cadena_limpia) >= 6:  # Establecer un mínimo de longitud para evitar falsos positivos
+                    # Buscar coincidencias de al menos 6 nucleótidos consecutivos
+                    for i in range(len(cadena_limpia) - 5):
+                        fragmento = cadena_limpia[i:i+6]
+                        if fragmento in adn:
+                            resultados_crispr.append({
+                                "gen": gen,
+                                "nombre_enfermedad": info['name'],
+                                "cadena": info['cadena'],
+                                "cadena_coincidente": fragmento,
+                                "coincidencia_parcial": True,
+                                "descripcion": info.get('descripcion', 'No hay descripción disponible')
+                            })
+                            break  # Evitar múltiples coincidencias del mismo gen
+                
+                # También verificar coincidencia completa
+                if cadena_limpia in adn:
+                    # Actualizar el resultado existente o agregar uno nuevo
+                    for resultado in resultados_crispr:
+                        if resultado["gen"] == gen:
+                            resultado["coincidencia_parcial"] = False
+                            break
+                    else:
+                        resultados_crispr.append({
+                            "gen": gen,
+                            "nombre_enfermedad": info['name'],
+                            "cadena": info['cadena'],
+                            "coincidencia_parcial": False,
+                            "descripcion": info.get('descripcion', 'No hay descripción disponible')
+                        })
+            
+            # Imprimir información de depuración
+            print(f"ADN analizado: {adn}")
+            print(f"Resultados CRISPR: {len(resultados_crispr)}")
+            
+            return render_template('resultados.html',
+                                  resultados_crispr=resultados_crispr,
+                                  adn_input=adn)
+        else:
+            return render_template('resultados.html',
+                                  error="La secuencia ingresada no es una cadena de ADN válida. Solo se permiten los caracteres A, T, C y G.",
+                                  adn_input=adn)
 
-        # Renderizar los resultados en resultados.html
-        return render_template('resultados.html',resultados=resultados, resultados_crispr=resultados_crispr)  
-    else:
-        return render_template('resultados.html', error="No es una cadena de ADN")        
-        
-
-
-@app.route('/edicion_genetica')
-def edicion_genetica():
-    return render_template('edicion_genetica.html')
-    
 @app.route('/crispr')
 def crispr():
-    return render_template('crispr.html')
-    
+    return render_template('crispr.html', texto_informativo=textos_informativos["crispr"])
+
 @app.route('/diccionarios')
 def diccionarios():
-    return render_template('diccionarios.html')
+    return render_template('diccionarios.html',
+                          bases_crispr=bases_crispr)
+
+@app.route('/test_coincidencias/<adn_test>')
+def test_coincidencias_route(adn_test):
+    """Ruta para probar coincidencias (útil para depuración)"""
+    adn_test = adn_test.upper()
+    resultados = []
     
+    for gen, info in bases_crispr.items():
+        cadena_limpia = limpiar_secuencia_crispr(info['cadena'])
+        
+        # Buscar coincidencias parciales
+        for i in range(len(cadena_limpia) - 5):
+            fragmento = cadena_limpia[i:i+6]
+            if fragmento in adn_test:
+                resultados.append({
+                    "gen": gen,
+                    "cadena_original": info['cadena'],
+                    "cadena_limpia": cadena_limpia,
+                    "fragmento": fragmento
+                })
+                break
+    
+    return {
+        "adn_test": adn_test,
+        "resultados": resultados
+    }
+
 if __name__ == '__main__':
+    # Verificar que las secuencias se limpien correctamente al iniciar
+    print("Verificando limpieza de secuencias CRISPR:")
+    for gen, info in bases_crispr.items():
+        cadena_original = info['cadena']
+        cadena_limpia = limpiar_secuencia_crispr(cadena_original)
+        print(f"{gen}: Original: {cadena_original} -> Limpia: {cadena_limpia}")
+    
     app.run(debug=True)
